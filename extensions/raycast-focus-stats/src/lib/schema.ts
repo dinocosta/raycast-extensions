@@ -5,7 +5,7 @@ export const sessionsTable = sqliteTable(
   {
     id: int().primaryKey({ autoIncrement: true }),
     goal: text().notNull(),
-    /** Duration in minutes */
+    /** Duration in seconds */
     duration: int().notNull(),
     timestamp: int().notNull().unique(),
   },

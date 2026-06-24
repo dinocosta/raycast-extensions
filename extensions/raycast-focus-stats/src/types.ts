@@ -15,7 +15,7 @@ export type Session = {
   goal: string;
 
   /**
-   * The length of the session in minutes.
+   * The length of the session in seconds.
    */
   duration: number;
 
@@ -59,7 +59,7 @@ export type NewSession = {
   start: Date;
 
   /**
-   * The length of the session in minutes.
+   * The length of the session in seconds.
    */
   duration: number;
 };
@@ -88,7 +88,7 @@ export type StartEvent = {
 export type SummaryEvent = {
   type: "summary";
   /**
-   * The length of the session in minutes.
+   * The length of the session in seconds.
    */
   duration: number;
 };

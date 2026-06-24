@@ -1,12 +1,32 @@
 /**
- * Formats a duration number into a human-readable string with proper pluralization
+ * Formats a duration, given in seconds, into a compact human-readable string.
  *
- * @param duration - The duration in minutes
- * @returns A string representation with "minute" or "minutes" based on the value
+ * Only non-zero units are shown, from hours down to seconds.
+ *
+ * @param seconds - The duration in seconds
+ * @returns A compact string such as "45s", "25m", "1m 30s" or "1h 5m 10s"
+ * @example
+ * durationString(45)   // "45s"
+ * durationString(1500) // "25m"
+ * durationString(3661) // "1h 1m 1s"
  */
-export function durationString(duration: number): string {
-  const suffix = duration === 1 ? "minute" : "minutes";
-  return `${duration} ${suffix}`;
+export function durationString(seconds: number): string {
+  const totalSeconds = Math.max(0, Math.round(seconds));
+
+  if (totalSeconds < 60) {
+    return `${totalSeconds}s`;
+  }
+
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const secs = totalSeconds % 60;
+
+  const parts: string[] = [];
+  if (hours > 0) parts.push(`${hours}h`);
+  if (minutes > 0) parts.push(`${minutes}m`);
+  if (secs > 0) parts.push(`${secs}s`);
+
+  return parts.join(" ");
 }
 
 /**

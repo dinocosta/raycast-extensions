@@ -15,6 +15,13 @@
       "when": 1752844591926,
       "tag": "0001_big_meteorite",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1782167665813,
+      "tag": "0002_minutes_to_seconds",
+      "breakpoints": true
     }
   ]
 }
